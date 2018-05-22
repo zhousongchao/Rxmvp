@@ -27,12 +27,10 @@ import javax.inject.Inject
  * @date 2018-04-27
  * @desc
  */
-class TabActivity : BaseMvpActivity<TabPresenter>() {
+class TabActivity : BaseMvpActivity<TabPresenter,TabFragment>() {
 
     override val layout = R.layout.tab_act
 
-    @Inject
-    lateinit var tabFragmentProvider: Lazy<TabFragment>
     @Inject
     lateinit var tabaFragmentProvider: Lazy<TabaFragment>
     @Inject
@@ -57,7 +55,7 @@ class TabActivity : BaseMvpActivity<TabPresenter>() {
     override fun initData(savedInstanceState: Bundle?) {
         LogUtils.d("Tab:initData")
         setSupportActionBar(toolBar)
-        mFragments = listOf(tabFragmentProvider.get(),
+        mFragments = listOf(mFragmentProvider.get(),
                 tabaFragmentProvider.get(),
                 tabbFragmentProvider.get(),
                 tabcFragmentProvider.get())

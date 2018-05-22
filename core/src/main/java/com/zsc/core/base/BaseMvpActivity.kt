@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.zsc.core.R
 import com.zsc.core.base.engine.IPresenter
+import dagger.Lazy
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasFragmentInjector
@@ -13,15 +14,19 @@ import javax.inject.Inject
 
 
 /**
- * BaseActivity和DaggerActivity的合并,并且注入了泛型Presenter
+ * BaseActivity和DaggerActivity的合并,并且注入了泛型Presenter和Fragment
  * @author Zsc
  * @date 2017/10/4
  */
 @Beta
-abstract class BaseMvpActivity<P : IPresenter<*>> : BaseActivity(),
+abstract class BaseMvpActivity<P : IPresenter<*>,F:BaseMvpFragment<*>> : BaseActivity(),
         HasFragmentInjector, HasSupportFragmentInjector {
     @Inject
     protected lateinit var mPresenter: P
+
+    @Inject
+    lateinit var mFragmentProvider: Lazy<F>
+
 
     override val layout: Int
         get() = R.layout.mvp_act
@@ -32,6 +37,22 @@ abstract class BaseMvpActivity<P : IPresenter<*>> : BaseActivity(),
     lateinit var supportFragmentInjector: DispatchingAndroidInjector<Fragment>
     @Inject
     lateinit var frameworkFragmentInjector: DispatchingAndroidInjector<android.app.Fragment>
+
+    override fun initData(savedInstanceState: Bundle?) {
+        initFragment()
+    }
+
+    /**
+     * 加载Fragment到Activity
+     */
+    open fun initFragment(){
+        val fragment= supportFragmentManager
+                .findFragmentById(android.R.id.content)?:mFragmentProvider.get()
+        supportFragmentManager.beginTransaction()
+                .add(android.R.id.content,fragment)
+                .commitAllowingStateLoss()
+
+    }
 
     /**
      * 绑定生命周期
