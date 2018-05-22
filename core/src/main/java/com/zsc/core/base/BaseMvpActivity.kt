@@ -19,7 +19,7 @@ import javax.inject.Inject
  * @date 2017/10/4
  */
 @Beta
-abstract class BaseMvpActivity<P : IPresenter<*>,F:BaseMvpFragment<*>> : BaseActivity(),
+abstract class BaseMvpActivity<P : IPresenter<*>, F : BaseMvpFragment<*>> : BaseActivity(),
         HasFragmentInjector, HasSupportFragmentInjector {
     @Inject
     protected lateinit var mPresenter: P
@@ -27,9 +27,7 @@ abstract class BaseMvpActivity<P : IPresenter<*>,F:BaseMvpFragment<*>> : BaseAct
     @Inject
     lateinit var mFragmentProvider: Lazy<F>
 
-
-    override val layout: Int
-        get() = R.layout.mvp_act
+    override val layout = 0
     /**
      * DaggerActivity添加
      */
@@ -38,6 +36,9 @@ abstract class BaseMvpActivity<P : IPresenter<*>,F:BaseMvpFragment<*>> : BaseAct
     @Inject
     lateinit var frameworkFragmentInjector: DispatchingAndroidInjector<android.app.Fragment>
 
+    /**
+     * 初始化
+     */
     override fun initData(savedInstanceState: Bundle?) {
         initFragment()
     }
@@ -45,11 +46,11 @@ abstract class BaseMvpActivity<P : IPresenter<*>,F:BaseMvpFragment<*>> : BaseAct
     /**
      * 加载Fragment到Activity
      */
-    open fun initFragment(){
-        val fragment= supportFragmentManager
-                .findFragmentById(android.R.id.content)?:mFragmentProvider.get()
+    open fun initFragment() {
+        val fragment = supportFragmentManager
+                .findFragmentById(android.R.id.content) ?: mFragmentProvider.get()
         supportFragmentManager.beginTransaction()
-                .add(android.R.id.content,fragment)
+                .add(android.R.id.content, fragment)
                 .commitAllowingStateLoss()
 
     }

@@ -5,5 +5,7 @@
 /.idea/modules.xml
 /.idea/workspace.xml
 /build
+/gradle
+/.gradle
 /captures
 .externalNativeBuild
