@@ -1,0 +1,65 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+def libs = rootProject.ext.libraries
+def cfg = rootProject.ext.configuration
+//上传JCenter使用
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'zhousongchao'//bintray.com用户名
+    groupId = 'com.zsc.core'//jcenter上的路径
+    artifactId = 'rxmvp'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'kotlin的rxmvp框架'//描述，不重要
+//  website = 'https://'//网站，最好有，不重要
+}
+
+android {
+    compileSdkVersion cfg.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //Kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    /*rx-java-android*/
+    api "io.reactivex.rxjava2:rxkotlin:${libs.rxkotlin}"
+    api "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
+    /*retrofit2*/
+    api "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit2}"
+    api "com.squareup.retrofit2:retrofit:${libs.retrofit2}"
+    api "com.squareup.retrofit2:converter-scalars:${libs.retrofit2}"
+    api "com.squareup.retrofit2:converter-gson:${libs.retrofit2}"//OKHttpLogging
+    api "com.squareup.okhttp3:logging-interceptor:${libs.okhttp3}"
+    //dagger依赖注入
+    api "com.google.dagger:dagger:${libs.dagger}"
+    api "com.google.dagger:dagger-android:${libs.dagger}"
+    api "com.google.dagger:dagger-android-support:${libs.dagger}"
+
+    //v7包
+    compileOnly "com.android.support:appcompat-v7:${libs.appcompat}"
+
+}
