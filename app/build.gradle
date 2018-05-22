@@ -35,8 +35,6 @@ dependencies {
     //导入support包
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation "com.android.support:appcompat-v7:${libs.appcompat}"
-    //Util合集
-    implementation "com.blankj:utilcode:${libs.utilcode}"
 
     //代码自动生成导入
     kapt "com.google.dagger:dagger-compiler:${libs.dagger}"

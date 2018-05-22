@@ -1,11 +1,10 @@
 package com.zsc.rxmvp.mvp.tab.taba
 
 import android.os.Bundle
-import com.blankj.utilcode.util.LogUtils
-
 import com.zsc.core.base.BaseMvpFragment
-import com.zsc.rxmvp.R
 import com.zsc.core.dagger.ActivityScoped
+import com.zsc.rxmvp.R
+import com.zsc.rxmvp.utils.logd
 import kotlinx.android.synthetic.main.taba_frag.*
 import javax.inject.Inject
 
@@ -23,7 +22,7 @@ constructor() : BaseMvpFragment<TabaPresenter>(),TabaContract.View {
     override val layout = R.layout.taba_frag
 
     override fun initData(savedInstanceState: Bundle?) {
-        LogUtils.d("A:initData")
+        logd("A:initData")
         tvTabA.text = "TabAText"
         tvTabA.setOnClickListener {
             mPresenter.changeText("changeText${clickTimes++}")

@@ -10,8 +10,9 @@ publish {
     userOrg = 'zhousongchao'//bintray.com用户名
     groupId = 'com.zsc.core'//jcenter上的路径
     artifactId = 'rxmvp'//项目名称
-    publishVersion = '1.0.0'//版本号
+    publishVersion = '1.0.1'//版本号
     desc = 'kotlin的rxmvp框架'//描述，不重要
+
 //  website = 'https://'//网站，最好有，不重要
 }
 

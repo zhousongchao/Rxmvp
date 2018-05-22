@@ -1,11 +1,11 @@
 package com.zsc.rxmvp.mvp.tab.tabb
 
 import android.os.Bundle
-import com.blankj.utilcode.util.ToastUtils
 
 import com.zsc.core.base.BaseMvpFragment
 import com.zsc.rxmvp.R
 import com.zsc.core.dagger.ActivityScoped
+import com.zsc.rxmvp.utils.toast
 import kotlinx.android.synthetic.main.tabb_frag.*
 import javax.inject.Inject
 
@@ -29,7 +29,7 @@ constructor() : BaseMvpFragment<TabbPresenter>(), TabbContract.View {
     }
 
     override fun viewToast(string: String) {
-        ToastUtils.showShort(string)
+        toast(string)
     }
 
 

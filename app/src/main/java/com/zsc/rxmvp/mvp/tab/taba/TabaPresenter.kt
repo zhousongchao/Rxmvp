@@ -1,8 +1,8 @@
 package com.zsc.rxmvp.mvp.tab.taba
 
-import com.blankj.utilcode.util.LogUtils
 import com.zsc.core.base.BasePresenter
 import com.zsc.core.dagger.ActivityScoped
+import com.zsc.rxmvp.utils.logd
 import javax.inject.Inject
 
 /**
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class TabaPresenter @Inject
 constructor() : BasePresenter<TabaContract.View>(), TabaContract.Presenter {
     override fun changeText(string: String) {
-        LogUtils.d(string)
+        logd(string)
         mView?.changeViewText(string)
     }
 }

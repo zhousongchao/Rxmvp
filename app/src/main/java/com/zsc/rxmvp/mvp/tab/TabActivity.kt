@@ -5,8 +5,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
-import com.blankj.utilcode.util.FragmentUtils
-import com.blankj.utilcode.util.LogUtils
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.zsc.core.base.BaseMvpActivity
@@ -17,6 +15,7 @@ import com.zsc.rxmvp.mvp.tab.tabb.TabbFragment
 import com.zsc.rxmvp.mvp.tab.tabb.TabbPresenter
 import com.zsc.rxmvp.mvp.tab.tabc.TabcFragment
 import com.zsc.rxmvp.mvp.tab.tabc.TabcPresenter
+import com.zsc.rxmvp.utils.logd
 import dagger.Lazy
 import kotlinx.android.synthetic.main.include_toolbar.*
 import kotlinx.android.synthetic.main.tab_act.*
@@ -53,7 +52,7 @@ class TabActivity : BaseMvpActivity<TabPresenter,TabFragment>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        LogUtils.d("Tab:initData")
+        logd("Tab:initData")
         setSupportActionBar(toolBar)
         mFragments = listOf(mFragmentProvider.get(),
                 tabaFragmentProvider.get(),

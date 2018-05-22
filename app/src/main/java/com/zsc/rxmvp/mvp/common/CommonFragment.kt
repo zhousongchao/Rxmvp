@@ -1,11 +1,10 @@
 package com.zsc.rxmvp.mvp.common
 
 import android.os.Bundle
-import com.blankj.utilcode.util.LogUtils
 import com.zsc.core.base.BaseMvpFragment
 import com.zsc.core.dagger.ActivityScoped
 import com.zsc.rxmvp.R
-import com.zsc.rxmvp.R.id.toolBar
+import com.zsc.rxmvp.utils.logd
 import kotlinx.android.synthetic.main.include_toolbar.*
 import javax.inject.Inject
 
@@ -29,8 +28,8 @@ constructor() : BaseMvpFragment<CommonPresenter>() {
 
     override fun initData(savedInstanceState: Bundle?) {
         appCompatActivity?.setSupportActionBar(toolBar)
-        LogUtils.d(id)
-        LogUtils.d(isAdd)
+        logd(id)
+        logd(isAdd)
     }
 
 }

@@ -1,9 +1,9 @@
 package com.zsc.rxmvp.mvp.tab.tabc
 
-import com.blankj.utilcode.util.LogUtils
 import com.zsc.core.base.BasePresenter
 import com.zsc.core.dagger.ActivityScoped
 import com.zsc.core.retrofit.io2Main
+import com.zsc.rxmvp.utils.logd
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -21,7 +21,7 @@ constructor() : BasePresenter<TabcContract.View>(), TabcContract.Presenter {
     //如果退出有其他数据需要处理则用第一种
     ///如果退出数据不需要处理则用第二种
     override fun toastDelay(string: String) {
-        LogUtils.d("toastDelay")
+        logd("toastDelay")
         //延时三秒显示Toast，当view被销毁(=null)则不展示，LogUtils.d("toastDelay:$string")执行
         /*Observable.just(string)
                 .delay(3, TimeUnit.SECONDS)
@@ -44,7 +44,7 @@ constructor() : BasePresenter<TabcContract.View>(), TabcContract.Presenter {
                     }
 
                     override fun onNext(t: String) {
-                        LogUtils.d("toastDelay:$string")
+                        logd("toastDelay:$string")
                         mView?.viewToastDelay(string)
                     }
 

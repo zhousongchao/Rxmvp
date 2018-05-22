@@ -1,12 +1,11 @@
 package com.zsc.rxmvp
 
-import com.blankj.utilcode.util.Utils
 import com.zsc.core.BuildConfig
 import com.zsc.core.retrofit.RxHttp
 import com.zsc.rxmvp.di.DaggerAppComponent
+import com.zsc.rxmvp.utils.ToastUtils
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
-import okhttp3.logging.HttpLoggingInterceptor
 
 
 /**
@@ -18,7 +17,7 @@ class MvpApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        Utils.init(this)
+        ToastUtils.init(this)
         initRxHttp()
 
 

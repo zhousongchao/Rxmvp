@@ -1,12 +1,11 @@
 package com.zsc.rxmvp.mvp.tab.tabc
 
 import android.os.Bundle
-import com.blankj.utilcode.util.ToastUtils
 
 import com.zsc.core.base.BaseMvpFragment
 import com.zsc.rxmvp.R
 import com.zsc.core.dagger.ActivityScoped
-import com.zsc.rxmvp.R.id.tvTabC
+import com.zsc.rxmvp.utils.toast
 import kotlinx.android.synthetic.main.tabc_frag.*
 import javax.inject.Inject
 
@@ -30,7 +29,7 @@ constructor() : BaseMvpFragment<TabcPresenter>(), TabcContract.View {
     }
 
     override fun viewToastDelay(string: String) {
-        ToastUtils.showShort(string)
+        toast(string)
         //这里要加？判断非空，在滑动到第tab和taba是tabc视图会被销毁，
         // presenter的mView不为null，在tab页使用mvp时要注意！！！！tab只会保留当前和相邻的视图
         if (tvTabC == null) {

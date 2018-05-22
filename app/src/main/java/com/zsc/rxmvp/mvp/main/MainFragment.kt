@@ -2,12 +2,12 @@ package com.zsc.rxmvp.mvp.main
 
 import android.content.Intent
 import android.os.Bundle
-import com.blankj.utilcode.util.LogUtils
 import com.zsc.core.base.BaseMvpFragment
 import com.zsc.core.dagger.ActivityScoped
 import com.zsc.rxmvp.R
 import com.zsc.rxmvp.mvp.common.CommonActivity
 import com.zsc.rxmvp.mvp.tab.TabActivity
+import com.zsc.rxmvp.utils.logd
 import kotlinx.android.synthetic.main.main_frag.*
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ constructor() : BaseMvpFragment<MainPresenter>(), MainContract.View {
     override fun initData(savedInstanceState: Bundle?) {
         appCompatActivity?.setSupportActionBar(toolBarMain)
         tvToCommon.text = "ToCommon"
-        LogUtils.d("ToCommon")
+        logd("ToCommon")
         tvToCommon.setOnClickListener {
             val intent = Intent(context, CommonActivity::class.java)
             intent.putExtra("1235", "9876")
