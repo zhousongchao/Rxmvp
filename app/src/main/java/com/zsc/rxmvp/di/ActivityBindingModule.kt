@@ -34,7 +34,5 @@ abstract class ActivityBindingModule {
         TabbModule::class, TabcModule::class])
     abstract fun tabActivity(): TabActivity
 
-
-
 }
         
