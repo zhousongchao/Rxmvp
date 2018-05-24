@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+def libs = rootProject.ext.libraries
+
+/*apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'zhousongchao'//bintray.com用户名
+    groupId = 'com.zsc.core'//jcenter上的路径
+    artifactId = 'dagger'//项目名称
+    publishVersion = versionName//版本号
+    desc = 'kotlin的rxmvp框架:抽离retrofit模块'//描述，不重要
+}*/
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //dagger依赖注入
+    api "com.google.dagger:dagger:${libs.dagger}"
+    api "com.google.dagger:dagger-android:${libs.dagger}"
+    api "com.google.dagger:dagger-android-support:${libs.dagger}"
+    //v7包
+    compileOnly "com.android.support:appcompat-v7:${libs.appcompat}"
+}
