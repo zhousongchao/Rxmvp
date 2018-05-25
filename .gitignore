@@ -1,5 +1,6 @@
 *.iml
 .gradle
+*.apk
 /local.properties
 /build
 /gradle
@@ -10,3 +11,10 @@
 /gradlew
 /gradlew.bat
 /.idea/
+/app/release/
+.DS_Store
+/dagger/build/
+rxhttp/build/
+/rxmvp/proguard-rules.pro
+rxmvp/libs/
+rxmvp/src/main/java/

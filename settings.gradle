@@ -1,1 +1,4 @@
-include ':app', ':rxmvp', ':rxhttp', ':dagger'
+include ':app'
+include ':core'
+include ':rxhttp'
+include ':dagger'

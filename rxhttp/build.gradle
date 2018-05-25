@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 def libs = rootProject.ext.libraries
-//上传JCenter使用
 apply plugin: 'com.novoda.bintray-release'
 
 publish {
@@ -9,26 +9,13 @@ publish {
     groupId = 'com.zsc.core'//jcenter上的路径
     artifactId = 'rxhttp'//项目名称
     publishVersion = versionName//版本号
-    desc = 'kotlin的rxmvp框架:抽离retrofit模块'//描述，不重要
+    desc = 'kotlin的rxmvp框架:抽离rxhttp模块'//描述，不重要
+
+//  website = 'https://'//网站，最好有，不重要
 }
+
 android {
     compileSdkVersion 27
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
 }
 
 dependencies {
@@ -42,4 +29,5 @@ dependencies {
     api "com.squareup.retrofit2:converter-gson:${libs.retrofit2}"
     //OKHttpLogging
     api "com.squareup.okhttp3:logging-interceptor:${libs.okhttp3}"
+
 }

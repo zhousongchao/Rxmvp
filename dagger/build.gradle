@@ -1,41 +1,33 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 def libs = rootProject.ext.libraries
+//上传JCenter使用
+apply plugin: 'com.novoda.bintray-release'
 
-/*apply plugin: 'com.novoda.bintray-release'
 publish {
     userOrg = 'zhousongchao'//bintray.com用户名
     groupId = 'com.zsc.core'//jcenter上的路径
     artifactId = 'dagger'//项目名称
     publishVersion = versionName//版本号
-    desc = 'kotlin的rxmvp框架:抽离retrofit模块'//描述，不重要
-}*/
+    desc = 'kotlin的rxmvp框架:抽离dagger模块'//描述，不重要
+
+//  website = 'https://'//网站，最好有，不重要
+}
 
 android {
     compileSdkVersion 27
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName versionName
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
 }
 
 dependencies {
+    /*rx-java-android*/
+    api "io.reactivex.rxjava2:rxkotlin:${libs.rxkotlin}"
+    api "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
     //dagger依赖注入
     api "com.google.dagger:dagger:${libs.dagger}"
     api "com.google.dagger:dagger-android:${libs.dagger}"
     api "com.google.dagger:dagger-android-support:${libs.dagger}"
     //v7包
     compileOnly "com.android.support:appcompat-v7:${libs.appcompat}"
+
 }

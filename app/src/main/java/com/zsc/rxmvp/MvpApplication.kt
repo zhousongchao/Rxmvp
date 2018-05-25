@@ -1,6 +1,5 @@
 package com.zsc.rxmvp
 
-import com.zsc.core.BuildConfig
 import com.zsc.core.retrofit.RxHttp
 import com.zsc.rxmvp.di.DaggerAppComponent
 import com.zsc.rxmvp.utils.ToastUtils
@@ -20,13 +19,12 @@ class MvpApplication : DaggerApplication() {
         ToastUtils.init(this)
         initRxHttp()
 
-
     }
 
     private fun initRxHttp() {
         //RxHttp设置
         RxHttp.setGlobalBaseUrl("http://your.base.url")
-                .addLoggingInterceptor(BuildConfig.DEBUG)
+               .addLoggingInterceptor(BuildConfig.DEBUG)
 
         //可以自定义设置retrofit
         //RxHttp.retrofitBuilder=...

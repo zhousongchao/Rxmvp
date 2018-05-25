@@ -40,23 +40,4 @@ android {
 
 dependencies {
 
-    //Kotlin
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    //rx-java-android
-    api "io.reactivex.rxjava2:rxkotlin:${libs.rxkotlin}"
-    api "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
-    //retrofit2
-    api "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit2}"
-    api "com.squareup.retrofit2:retrofit:${libs.retrofit2}"
-    api "com.squareup.retrofit2:converter-scalars:${libs.retrofit2}"
-    api "com.squareup.retrofit2:converter-gson:${libs.retrofit2}"//OKHttpLogging
-    api "com.squareup.okhttp3:logging-interceptor:${libs.okhttp3}"
-    //dagger依赖注入
-    api "com.google.dagger:dagger:${libs.dagger}"
-    api "com.google.dagger:dagger-android:${libs.dagger}"
-    api "com.google.dagger:dagger-android-support:${libs.dagger}"
-
-    //v7包
-    compileOnly "com.android.support:appcompat-v7:${libs.appcompat}"
-
 }

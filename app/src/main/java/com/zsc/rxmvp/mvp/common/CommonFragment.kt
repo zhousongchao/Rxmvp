@@ -27,7 +27,7 @@ constructor() : BaseMvpFragment<CommonPresenter>() {
     override val layout = R.layout.common_frag
 
     override fun initData(savedInstanceState: Bundle?) {
-        appCompatActivity?.setSupportActionBar(toolBar)
+        appCompatActivity.setSupportActionBar(toolBar)
         logd(id)
         logd(isAdd)
     }
