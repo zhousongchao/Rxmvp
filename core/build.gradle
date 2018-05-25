@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android'
 def libs = rootProject.ext.libraries
 def cfg = rootProject.ext.configuration
 //上传JCenter使用
-/*apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 publish {
     userOrg = 'zhousongchao'//bintray.com用户名
@@ -14,30 +14,16 @@ publish {
     desc = 'kotlin的rxmvp框架'//描述，不重要
 
 //  website = 'https://'//网站，最好有，不重要
-}*/
+}
 
 android {
     compileSdkVersion cfg.compileSdkVersion
-
-    defaultConfig {
-        minSdkVersion cfg.minSdkVersion
-        targetSdkVersion cfg.targetSdkVersion
-        versionCode 1
-        versionName versionName
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
 }
 
 dependencies {
+    api "com.zsc.core:rxhttp:$versionName"
+    api("com.zsc.core:dagger:$versionName") {
+        exclude group: 'io.reactivex.rxjava2'
+    }
 
 }

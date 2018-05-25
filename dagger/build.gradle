@@ -10,7 +10,7 @@ publish {
     groupId = 'com.zsc.core'//jcenter上的路径
     artifactId = 'dagger'//项目名称
     publishVersion = versionName//版本号
-    desc = 'kotlin的rxmvp框架:抽离dagger模块'//描述，不重要
+    desc = 'kotlin的rxmvp框架:dagger模块'//描述，不重要
 
 //  website = 'https://'//网站，最好有，不重要
 }
@@ -28,6 +28,6 @@ dependencies {
     api "com.google.dagger:dagger-android:${libs.dagger}"
     api "com.google.dagger:dagger-android-support:${libs.dagger}"
     //v7包
-    compileOnly "com.android.support:appcompat-v7:${libs.appcompat}"
+    implementation "com.android.support:appcompat-v7:${libs.appcompat}"
 
 }

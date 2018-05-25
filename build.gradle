@@ -2,7 +2,7 @@
 apply from: "config.gradle"
 buildscript {
     ext.kotlin_version = '1.2.41'
-    ext.versionName = "1.0.2"
+    ext.versionName = "1.1.0"
 
     repositories {
         google()
@@ -25,7 +25,6 @@ allprojects {
         jcenter()
         maven { url 'https://jitpack.io' }
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-
         maven { url 'https://dl.bintray.com/zhousongchao/maven/' }
     }
     //字体问题
@@ -36,10 +35,9 @@ allprojects {
 }
 
 //非常重要要,不然它不认识你的项目.kt文件名
-//tasks.getByPath(":rxmvp:releaseAndroidJavadocs").enabled = false
+tasks.getByPath(":core:releaseAndroidJavadocs").enabled = false
 //tasks.getByPath(":dagger:releaseAndroidJavadocs").enabled = false
-tasks.getByPath(":rxhttp:releaseAndroidJavadocs").enabled = false
-
+//tasks.getByPath(":rxhttp:releaseAndroidJavadocs").enabled = false
 
 
 task clean(type: Delete) {

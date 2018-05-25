@@ -9,7 +9,7 @@ publish {
     groupId = 'com.zsc.core'//jcenter上的路径
     artifactId = 'rxhttp'//项目名称
     publishVersion = versionName//版本号
-    desc = 'kotlin的rxmvp框架:抽离rxhttp模块'//描述，不重要
+    desc = 'kotlin的rxmvp框架:retrofit模块'//描述，不重要
 
 //  website = 'https://'//网站，最好有，不重要
 }
