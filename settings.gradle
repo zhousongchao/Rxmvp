@@ -1,4 +1,12 @@
-//include ':app'
-include ':core'
-//include ':rxhttp'
-//include ':dagger'
+if(isApp){
+    include ':app'
+}
+if (isRxMvp.toBoolean()) {
+    include ':core'
+}
+if (isDagger.toBoolean()) {
+    include ':dagger'
+}
+if (isRxHttp.toBoolean()) {
+    include ':rxhttp'
+}

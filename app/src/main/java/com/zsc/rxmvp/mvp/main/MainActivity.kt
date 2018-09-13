@@ -7,4 +7,8 @@ import com.zsc.core.base.BaseMvpActivity
  * @date 2018-04-24
  * @desc
  */
-class MainActivity : BaseMvpActivity<MainPresenter,MainFragment>()
+class MainActivity : BaseMvpActivity<MainPresenter, MainFragment>() {
+    override val isSwipeBack: Boolean
+        get() = false
+
+}

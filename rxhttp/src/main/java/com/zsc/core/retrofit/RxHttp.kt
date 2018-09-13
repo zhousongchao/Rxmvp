@@ -18,7 +18,11 @@ object RxHttp {
     /** 全局Retrofit，可以获取用来重新设置  */
     var retrofitBuilder: Retrofit.Builder
     /** Retrofit的baseUrl*/
-    private var url = "http://www.zsc.com/"
+    var globalBaseUrl = "http://www.zsc.com/"
+        set(value) {
+            field = value
+            retrofitBuilder.baseUrl(value)
+        }
     /** 缓存retrofit实例 */
     private val retrofitMap by lazy {
         mutableMapOf<String, Retrofit>()
@@ -58,7 +62,7 @@ object RxHttp {
      */
     private fun createRetrofitBuilder(): Retrofit.Builder {
         return Retrofit.Builder()
-                .baseUrl(url)
+                .baseUrl(globalBaseUrl)
                 //解析非json数据
                 //.addConverterFactory(ScalarsConverterFactory.create())
                 //解析json数据
@@ -67,16 +71,6 @@ object RxHttp {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     }
 
-
-    /**
-     * 设置全局baseUrl
-     * @param baseUrl
-     */
-    fun setGlobalBaseUrl(baseUrl: String): RxHttp {
-        url = baseUrl
-        retrofitBuilder.baseUrl(url)
-        return this
-    }
 
     fun addLoggingInterceptor(isDebug: Boolean) {
         if (!isDebug) return
@@ -87,19 +81,12 @@ object RxHttp {
 
 
     /**
-     * 获取retrofitBuilder的url
-     */
-    fun getGlobalBaseUrl(): String {
-        return url
-    }
-
-    /**
      * 获取Retrofit，baseUrl为null则用retrofitBuilder默认的url
      * @return
      */
     private fun createRetrofit(baseUrl: String? = null): Retrofit {
         return retrofitBuilder
-                .baseUrl(baseUrl ?: url)
+                .baseUrl(baseUrl ?: globalBaseUrl)
                 //okHttp配置
                 .client(okHttpClientBuilder.build())
                 .build()

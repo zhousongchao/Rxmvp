@@ -3,17 +3,18 @@ apply plugin: 'kotlin-android'
 
 def libs = rootProject.ext.libraries
 //上传JCenter使用
-apply plugin: 'com.novoda.bintray-release'
-
-publish {
-    userOrg = 'zhousongchao'//bintray.com用户名
-    groupId = 'com.zsc.core'//jcenter上的路径
-    artifactId = 'dagger'//项目名称
-    publishVersion = versionName//版本号
-    desc = 'kotlin的rxmvp框架:dagger模块'//描述，不重要
-
+if (isDagger.toBoolean()) {
+    apply plugin: 'com.novoda.bintray-release'
+    publish {
+        userOrg = 'zhousongchao'//bintray.com用户名
+        groupId = 'com.zsc.core'//jcenter上的路径
+        artifactId = 'dagger'//项目名称
+        publishVersion = versionName//版本号
+        desc = 'kotlin的rxmvp框架:dagger模块'//描述，不重要
 //  website = 'https://'//网站，最好有，不重要
+    }
 }
+
 
 android {
     compileSdkVersion 27
@@ -27,6 +28,8 @@ dependencies {
     api "com.google.dagger:dagger:${libs.dagger}"
     api "com.google.dagger:dagger-android:${libs.dagger}"
     api "com.google.dagger:dagger-android-support:${libs.dagger}"
+    //侧滑返回
+    api "me.imid.swipebacklayout.lib:library:${libs.swipebacklayout}"
     //v7包
     implementation "com.android.support:appcompat-v7:${libs.appcompat}"
 

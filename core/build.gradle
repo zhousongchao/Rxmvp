@@ -3,17 +3,18 @@ apply plugin: 'kotlin-android'
 
 def libs = rootProject.ext.libraries
 def cfg = rootProject.ext.configuration
-//上传JCenter使用
-apply plugin: 'com.novoda.bintray-release'
+if(isRxMvp.toBoolean()){
+    //上传JCenter使用
+    apply plugin: 'com.novoda.bintray-release'
 
-publish {
-    userOrg = 'zhousongchao'//bintray.com用户名
-    groupId = 'com.zsc.core'//jcenter上的路径
-    artifactId = 'rxmvp'//项目名称
-    publishVersion = versionName//版本号
-    desc = 'kotlin的rxmvp框架'//描述，不重要
-
+    publish {
+        userOrg = 'zhousongchao'//bintray.com用户名
+        groupId = 'com.zsc.core'//jcenter上的路径
+        artifactId = 'rxmvp'//项目名称
+        publishVersion = versionName//版本号
+        desc = 'kotlin的rxmvp框架'//描述，不重要
 //  website = 'https://'//网站，最好有，不重要
+    }
 }
 
 android {
@@ -21,7 +22,7 @@ android {
 }
 
 dependencies {
-    api "com.zsc.core:rxhttp:$versionName"
+    api "com.zsc.core:rxhttp:${versionName}"
     api("com.zsc.core:dagger:$versionName") {
         exclude group: 'io.reactivex.rxjava2'
     }

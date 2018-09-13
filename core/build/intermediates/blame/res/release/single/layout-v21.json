@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\AbWork\\Rxmvp\\core\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\a13e93f419aaacce1d7df20d9663f4ac\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\AbWork\\Rxmvp\\core\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\a13e93f419aaacce1d7df20d9663f4ac\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\AbWork\\Rxmvp\\core\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\a13e93f419aaacce1d7df20d9663f4ac\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\AbWork\\Rxmvp\\core\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\a13e93f419aaacce1d7df20d9663f4ac\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]

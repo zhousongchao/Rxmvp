@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.dagger:dagger-android-2.13">
     <CLASSES>
-      <root url="jar://$APPLICATION_HOME_DIR$/gradle/caches/transforms-1/files-1.1/dagger-android-2.13.aar/b93dfaaf21fdacb42b8f0ca735e6b922/jars/classes.jar!/" />
-      <root url="file://$APPLICATION_HOME_DIR$/gradle/caches/transforms-1/files-1.1/dagger-android-2.13.aar/b93dfaaf21fdacb42b8f0ca735e6b922/res" />
+      <root url="file://D:/SpacePath/.gradle/caches/transforms-1/files-1.1/dagger-android-2.13.aar/4ba2b0b2c04a8fdfcae99f44f53535ad/res" />
+      <root url="jar://D:/SpacePath/.gradle/caches/transforms-1/files-1.1/dagger-android-2.13.aar/4ba2b0b2c04a8fdfcae99f44f53535ad/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$APPLICATION_HOME_DIR$/gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-android/2.13/ae7110c7468486a700d2ece52b09231b64bfad52/dagger-android-2.13-sources.jar!/" />
+      <root url="jar://D:/SpacePath/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-android/2.13/ae7110c7468486a700d2ece52b09231b64bfad52/dagger-android-2.13-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

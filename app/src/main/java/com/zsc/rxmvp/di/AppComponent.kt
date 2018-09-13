@@ -20,10 +20,6 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class])
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
-    fun inject(application: MvpApplication)
-
-    override fun inject(application: DaggerApplication)
-
     @Component.Builder
     interface Builder {
 

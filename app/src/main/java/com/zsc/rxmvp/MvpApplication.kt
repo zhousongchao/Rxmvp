@@ -23,8 +23,8 @@ class MvpApplication : DaggerApplication() {
 
     private fun initRxHttp() {
         //RxHttp设置
-        RxHttp.setGlobalBaseUrl("http://your.base.url")
-               .addLoggingInterceptor(BuildConfig.DEBUG)
+        RxHttp.globalBaseUrl = "http://your.base.url"
+        RxHttp.addLoggingInterceptor(BuildConfig.DEBUG)
 
         //可以自定义设置retrofit
         //RxHttp.retrofitBuilder=...

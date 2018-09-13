@@ -2,6 +2,7 @@ package com.zsc.rxmvp.mvp.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import com.zsc.core.base.BaseMvpFragment
 import com.zsc.core.dagger.ActivityScoped
 import com.zsc.rxmvp.R
@@ -23,18 +24,19 @@ constructor() : BaseMvpFragment<MainPresenter>(), MainContract.View {
     override val layout = R.layout.main_frag
 
     override fun initData(savedInstanceState: Bundle?) {
-        appCompatActivity?.setSupportActionBar(toolBarMain)
-        tvToCommon.text = "ToCommon"
+        appCompatActivity.setSupportActionBar(toolBarMain)
+        btnToCommon.text = "ToCommon"
         logd("ToCommon")
-        tvToCommon.setOnClickListener {
+        btnToCommon.setOnClickListener {
             val intent = Intent(context, CommonActivity::class.java)
             intent.putExtra("1235", "9876")
             startActivity(intent)
         }
-        tvToTab.setOnClickListener {
+        btnToTab.setOnClickListener {
             startActivity(TabActivity::class.java)
         }
     }
+
 
 
 }

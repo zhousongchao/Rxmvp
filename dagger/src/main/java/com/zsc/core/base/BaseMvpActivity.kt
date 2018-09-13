@@ -11,7 +11,6 @@ import dagger.android.support.HasSupportFragmentInjector
 import dagger.internal.Beta
 import javax.inject.Inject
 
-
 /**
  * BaseActivity和DaggerActivity的合并,并且注入了泛型Presenter和Fragment
  * @author Zsc
@@ -48,18 +47,10 @@ abstract class BaseMvpActivity<P : IPresenter<*>, F : BaseMvpFragment<*>> : Base
     open fun initFragment() {
         val fragment = supportFragmentManager
                 .findFragmentById(android.R.id.content) ?: mFragmentProvider.get()
-        supportFragmentManager.beginTransaction()
-                .add(android.R.id.content, fragment)
-                .commitAllowingStateLoss()
-
-    }
-
-    /**
-     * 绑定生命周期
-     */
-    override fun initLifecycle() {
-        if (!useFragment()) {
-            lifecycle.addObserver(mPresenter)
+        if (!fragment.isAdded) {
+            supportFragmentManager.beginTransaction()
+                    .add(android.R.id.content, fragment)
+                    .commit()
         }
     }
 

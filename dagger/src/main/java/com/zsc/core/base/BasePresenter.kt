@@ -20,7 +20,7 @@ open class BasePresenter<T> : IPresenter<T> {
     /** 观察者管理器 */
     protected val mCompositeDisposable by lazy { CompositeDisposable() }
 
-    protected fun dispose() {
+    fun dispose() {
         mCompositeDisposable.dispose()
     }
 
@@ -28,7 +28,7 @@ open class BasePresenter<T> : IPresenter<T> {
      * 加入观察者绑定
      * @param disposable
      */
-    protected fun addDisposable(disposable: Disposable) {
+    fun addDisposable(disposable: Disposable) {
         mCompositeDisposable.add(disposable)
     }
 

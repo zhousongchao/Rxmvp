@@ -1,6 +1,7 @@
 package com.zsc.rxmvp.mvp.common
 
 import android.os.Bundle
+import android.view.MenuItem
 import com.zsc.core.base.BaseMvpFragment
 import com.zsc.core.dagger.ActivityScoped
 import com.zsc.rxmvp.R
@@ -28,8 +29,16 @@ constructor() : BaseMvpFragment<CommonPresenter>() {
 
     override fun initData(savedInstanceState: Bundle?) {
         appCompatActivity.setSupportActionBar(toolBar)
+        appCompatActivity.supportActionBar!!.setDisplayUseLogoEnabled(false)
         logd(id)
         logd(isAdd)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == android.R.id.home) {
+            appCompatActivity.finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

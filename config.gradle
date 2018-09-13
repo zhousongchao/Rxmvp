@@ -5,8 +5,7 @@ ext {
             compileSdkVersion: 27,
             minSdkVersion    : 15,
             targetSdkVersion : 27,
-            versionCode      : 1,
-            versionName      : "1.0.1",
+            versionCode      : 1
     ]
 
 
@@ -17,7 +16,8 @@ ext {
             retrofit2: '2.3.0',
             okhttp3  : '3.5.0',
             rxkotlin : '2.2.0',
-            rxandroid: '2.0.1'
+            rxandroid: '2.0.1',
+            swipebacklayout: '1.1.0'
     ]
 
 
