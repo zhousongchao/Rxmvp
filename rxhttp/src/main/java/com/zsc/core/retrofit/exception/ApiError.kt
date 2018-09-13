@@ -25,5 +25,7 @@ object ApiError {
     const val HTTP_ERROR = 1003
     const val HTTP_EXCEPTION = "网络错误"
 
+    const val API_EMPTY_MSG_ERROR = 1004
+    const val API_EMPTY_MSG_EXCEPTION = "数据返回错误"
 
 }
