@@ -1,10 +1,8 @@
 *.iml
 .gradle
-*.apk
 /local.properties
 /build
 /gradle
-/.gradle
 /captures
 .externalNativeBuild
 /gradle.properties

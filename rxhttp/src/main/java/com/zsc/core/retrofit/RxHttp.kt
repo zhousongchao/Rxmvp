@@ -2,6 +2,7 @@ package com.zsc.core.retrofit
 
 import com.zsc.core.retrofit.api.BaseUrl
 import com.zsc.core.retrofit.exception.ExceptionEngine
+import com.zsc.core.retrofit.exception.ExceptionHandleDefault
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object RxHttp {
     /** 错误信息捕获 */
-    var exceptionHandle: ExceptionEngine? = null
+    var exceptionHandle: ExceptionEngine = ExceptionHandleDefault
     /** 全局OkHttpClient，可以获取用来重新设置  */
     var okHttpClientBuilder: OkHttpClient.Builder
     /** 全局Retrofit，可以获取用来重新设置  */
