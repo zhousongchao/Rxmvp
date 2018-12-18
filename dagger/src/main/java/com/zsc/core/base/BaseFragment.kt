@@ -1,6 +1,5 @@
 package com.zsc.core.base
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -53,28 +52,16 @@ abstract class BaseFragment : Fragment(), IFragment {
 
     }
 
+
+    override fun getView(): View? {
+        return rootView
+    }
+
     /**
-     * 用于fragment设置toolBar
+     * 用于获取activity，避免空验证！！
      */
     val appCompatActivity: AppCompatActivity
         get() = activity as AppCompatActivity
-
-
-    /**
-     * 无需传参快速启动Activity
-     */
-    fun startActivity(clazz: Class<*>) {
-        val intent = Intent(context, clazz)
-        startActivity(intent)
-    }
-
-    /**
-     * 无需传参快速启动Activity
-     */
-    fun startActivityForResult(clazz: Class<*>, requestCode: Int) {
-        val intent = Intent(context, clazz)
-        startActivityForResult(intent, requestCode)
-    }
 
 
 }

@@ -25,10 +25,5 @@ interface IActivity {
      */
     fun initData(savedInstanceState: Bundle?)
 
-    /**
-     * 设置Window,在setContentView之前
-     */
-    fun setWindow() {}
-
 
 }

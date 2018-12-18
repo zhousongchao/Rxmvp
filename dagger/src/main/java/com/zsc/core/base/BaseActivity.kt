@@ -1,7 +1,5 @@
 package com.zsc.core.base
 
-import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -33,7 +31,6 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, SwipeBackActivityB
             mHelper = SwipeBackActivityHelper(this)
             mHelper?.onActivityCreate()
         }
-        setWindow()
         //如果initView返回0,框架则不会调用setContentView,自己在initData设置View
         if (layout != 0) {
             setContentView(layout)
@@ -84,16 +81,5 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, SwipeBackActivityB
             Utils.convertActivityToTranslucent(this)
             swipeBackLayout?.scrollToFinishActivity()
         }
-    }
-
-    /** 竖屏限定,如果不限定竖屏，则重写该方法，方法内为空  */
-    override fun setWindow() {
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-    }
-
-    /** 无需传参快速启动Activity  */
-    fun startActivity(clazz: Class<*>) {
-        val intent = Intent(this, clazz)
-        startActivity(intent)
     }
 }

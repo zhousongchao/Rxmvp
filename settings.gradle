@@ -1,4 +1,4 @@
-if(isApp){
+if (isApp.toBoolean()) {
     include ':app'
 }
 if (isRxMvp.toBoolean()) {

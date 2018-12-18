@@ -80,7 +80,7 @@ com
         │   ├──exception    【retrofit异常处理】
         │   │   ├──ApiError.kt         【retrofit请求错误自定义】
         │   │   ├──ApiException.kt     【retrofit请求异常类】
-        │   │   └──ExceptionEngine.kt  【retrofit请求异常捕获】
+        │   │   └──ApiInterceptor.kt  【retrofit请求异常捕获】
         │   ├──RxHttp.kt       【retrofit网络请求简单封装】
         └── └──RxUtils.kt      【Rxjava工具】
 

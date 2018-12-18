@@ -15,7 +15,7 @@ if (isRxHttp.toBoolean()) {
     }
 }
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.configuration['compileSdkVersion']
 }
 
 dependencies {

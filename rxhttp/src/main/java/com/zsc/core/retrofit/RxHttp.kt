@@ -1,8 +1,8 @@
 package com.zsc.core.retrofit
 
 import com.zsc.core.retrofit.api.BaseUrl
-import com.zsc.core.retrofit.exception.ExceptionEngine
-import com.zsc.core.retrofit.exception.ExceptionHandleDefault
+import com.zsc.core.retrofit.exception.ApiInterceptor
+import com.zsc.core.retrofit.exception.ApiInterceptorDefault
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object RxHttp {
     /** 错误信息捕获 */
-    var exceptionHandle: ExceptionEngine = ExceptionHandleDefault
+    var apiInterceptor: ApiInterceptor = ApiInterceptorDefault
     /** 全局OkHttpClient，可以获取用来重新设置  */
     var okHttpClientBuilder: OkHttpClient.Builder
     /** 全局Retrofit，可以获取用来重新设置  */
@@ -27,6 +27,9 @@ object RxHttp {
             field = value
             retrofitBuilder.baseUrl(value)
         }
+    /** 是否缓存retrofit实例 */
+    var isCacheRetrofit: Boolean = true
+
     /** 缓存retrofit实例 */
     private val retrofitMap by lazy {
         mutableMapOf<String, Retrofit>()
@@ -39,25 +42,36 @@ object RxHttp {
 
     /**
      * 调用入口
+     */
+    inline fun <reified T> create(): T {
+        return create(T::class.java)
+    }
+
+    /**
+     * 调用入口
      * @param service
      * @param <T>
      * @return <T>
      * @desc 获取的retrofit
-     * 优先级：1、(interface从未通过RxHttp调用)retrofitMap（put或调用中）缓存的service.name为key的retrofit
+     * 优先级：1、(interface从未通过RxHttp调用)retrofitMap（put或调用-如果缓存）缓存的service.simpleName为key的retrofit
      *        2、(interface上有@BaseUrl标注)retrofitMap缓存或新建@BaseUrl标注的value为baseUrl的retrofit
      *                  并缓存在retrofitMap，key为interface.name
      *        3、(interface没有@BaseUrl标注)，新建以RxHttp.url为key的retrofit并缓存
      */
     fun <T> create(service: Class<T>): T {
-        retrofitMap[service.name]?.run {
-            return this.create(service)
+        if (isCacheRetrofit) {
+            retrofitMap[service.simpleName]?.run {
+                return this.create(service)
+            }
         }
         val baseUrl = if (service.isAnnotationPresent(BaseUrl::class.java))
             service.getAnnotation(BaseUrl::class.java).value
         else null
         return createRetrofit(baseUrl)
                 .apply {
-                    retrofitMap[service.name] = this
+                    if (isCacheRetrofit) {
+                        retrofitMap[service.simpleName] = this
+                    }
                 }.create(service)
     }
 
@@ -107,7 +121,7 @@ object RxHttp {
     /**
      * 用于配置自定义的retrofit
      * key是baseUrl：则baseUrl传null，retrofit可选
-     * key是interface的name，则baseUrl和retrofit必须填写一个
+     * key是interface的simpleName，则baseUrl和retrofit必须填写一个
      */
     fun putRetrofit(key: String, baseUrl: String? = null, retrofit: Retrofit? = null) {
         retrofitMap[key] = retrofit ?: createRetrofit(baseUrl ?: key)

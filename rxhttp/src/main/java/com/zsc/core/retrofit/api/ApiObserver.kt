@@ -1,16 +1,14 @@
 package com.zsc.core.retrofit.api
 
 import com.zsc.core.retrofit.RxHttp
-import com.zsc.core.retrofit.exception.ApiException
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
 /**
  * @author Zsc
  * @date 2018/2/14
- * @desc
+ * @desc 简洁的网络请求观察者
  */
-
 interface ApiObserver<T> : Observer<ResultApi<T>> {
 
     fun onSuccess(t: T)
@@ -22,13 +20,10 @@ interface ApiObserver<T> : Observer<ResultApi<T>> {
     override fun onComplete() {}
 
     override fun onError(throwable: Throwable) {
-        onFail(RxHttp.exceptionHandle.handleErrorMsg(throwable))
+        RxHttp.apiInterceptor.handleError(this, throwable)
     }
 
     override fun onNext(resultApi: ResultApi<T>) {
-        if (resultApi.code != 200 || resultApi.data == null) {
-            onFail(resultApi.msg
-                    ?: RxHttp.exceptionHandle.handleErrorMsg(ApiException.EMPTY_ERROR))
-        } else onSuccess(resultApi.data!!)
+        RxHttp.apiInterceptor.handleNext(this, resultApi)
     }
 }
